@@ -16,4 +16,8 @@ class Option extends Model implements HasMedia
     {
         return $this->belongsTo(Survey::class);
     }
+
+    public function votes(){
+        return $this->hasMany(Vote::class);
+    }
 }

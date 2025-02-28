@@ -21,8 +21,8 @@ class Vote extends Model
         return $this->belongsTo(Option::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 }

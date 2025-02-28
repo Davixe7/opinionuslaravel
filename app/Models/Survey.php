@@ -16,10 +16,10 @@ class Survey extends Model
         return $this->hasMany(Option::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
     public function votes()
     {

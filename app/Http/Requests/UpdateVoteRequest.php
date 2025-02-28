@@ -24,7 +24,7 @@ class UpdateVoteRequest extends FormRequest
         return [
             'survey_id' => 'nullable|exists:surveys,id',
             'option_id' => 'nullable|exists:options,id',
-            'user_id' => 'nullable|exists:users,id',
+            //'user_id' => 'nullable|exists:users,id',
         ];
     }
 }

@@ -13,34 +13,40 @@ class SurveyController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $surveys = $user->surveys;
+        //$this->authorize('viewAny', Survey::class);
+        //$user = Auth::user();
+        //$surveys = $user->hasRole('admin') ? Survey::all() : $user->surveys;
+        
+        $surveys = Survey::all();
         return SurveyResource::collection($surveys);
     }
 
     public function store(StoreSurveyRequest $request)
     {
-        $user = Auth::user();
-        $survey = $user->surveys()->create($request->validated());
+        //$user = Auth::user();
+        //$survey = $user->surveys()->create($request->validated());
+
+        $survey = Survey::create($request->validated());
         return new SurveyResource($survey);
     }
 
     public function show(Survey $survey)
     {
-        $this->authorize('view', $survey);
+        //$this->authorize('view', $survey);
+        
         return new SurveyResource($survey);
     }
 
     public function update(UpdateSurveyRequest $request, Survey $survey)
     {
-        $this->authorize('update', $survey);
+        //$this->authorize('update', $survey);
         $survey->update($request->validated());
         return new SurveyResource($survey);
     }
 
     public function destroy(Survey $survey)
     {
-        $this->authorize('delete', $survey);
+        //$this->authorize('delete', $survey);
         $survey->delete();
         return response()->noContent();
     }

@@ -13,18 +13,23 @@ class VoteController extends Controller
 {
     public function index(Survey $survey)
     {
-        $votes = $survey->votes;
+        //$votes = $survey->votes;
+
+        $votes = Vote::all();
         return VoteResource::collection($votes);
     }
 
     public function store(StoreVoteRequest $request, Survey $survey)
     {
-        $user = Auth::user();
-        $vote = Vote::create([
-            'survey_id' => $survey->id,
-            'option_id' => $request->option_id,
-            'user_id' => $user->id,
-        ]);
+        //$user = Auth::user();
+
+        // $vote = Vote::create([
+        //     'survey_id' => $survey->id,
+        //     'option_id' => $request->option_id,
+        //     'user_id' => $user->id,
+        // ]);
+
+        $vote = Vote::create($request->validated());
         return new VoteResource($vote);
     }
 

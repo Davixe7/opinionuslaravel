@@ -24,7 +24,7 @@ class StoreVoteRequest extends FormRequest
         return [
             'survey_id' => 'required|exists:surveys,id',
             'option_id' => 'required|exists:options,id',
-            'user_id' => 'required|exists:users,id',
+            //'user_id' => 'required|exists:users,id',
         ];
     }
 }
