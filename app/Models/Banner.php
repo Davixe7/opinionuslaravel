@@ -2,23 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Option extends Model implements HasMedia
+class Banner extends Model implements HasMedia
 {
-    protected $guarded = [];
     use HasFactory, InteractsWithMedia;
+
+    protected $fillable = ['survey_id', 'title'];
 
     public function survey()
     {
         return $this->belongsTo(Survey::class);
-    }
-
-    public function votes(){
-        return $this->hasMany(Vote::class);
     }
 
     public function registerMediaConversions(Media $media = null): void

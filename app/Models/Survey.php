@@ -25,4 +25,9 @@ class Survey extends Model
     {
         return $this->hasMany(Vote::class);
     }
+
+    public function banner()
+    {
+        return $this->hasOne(Banner::class);
+    }
 }

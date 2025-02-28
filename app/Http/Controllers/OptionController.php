@@ -19,7 +19,12 @@ class OptionController extends Controller
     public function store(StoreOptionRequest $request, Survey $survey)
     {
         $option = $survey->options()->create($request->validated());
-        $option->addMediaFromRequest('image')->toMediaCollection('images');
+
+
+        if ($request->hasFile('image')){
+            $option->addMediaFromRequest('image')->toMediaCollection('images');
+        }
+        
         return new OptionResource($option);
     }
 
@@ -31,6 +36,7 @@ class OptionController extends Controller
     public function update(UpdateOptionRequest $request, Survey $survey, Option $option)
     {
         $option->update($request->validated());
+        
         if ($request->hasFile('image')) {
             $option->clearMediaCollection('images');
             $option->addMediaFromRequest('image')->toMediaCollection('images');
