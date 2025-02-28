@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateOptionRequest extends FormRequest
+class UpdateVoteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,9 @@ class UpdateOptionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'nullable|string',
-            'url' => 'nullable|string',
-            'link' => 'nullable|string',
-            'image' => 'nullable|file|image|max:1024',
+            'survey_id' => 'nullable|exists:surveys,id',
+            'option_id' => 'nullable|exists:options,id',
+            'user_id' => 'nullable|exists:users,id',
         ];
     }
 }
